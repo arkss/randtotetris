@@ -13,12 +13,16 @@ CHIP Decoder4Way {
 
     PARTS:
     // Put your code here:
-    Decoder(in=in[0], out=out0, out=out1);
-    Decoder(in=in[1], out=out2, out=out3);
-    And(a=out0,b=out2,out=out[0]);
-    And(a=out0,b=out3,out=out[1]);
-    And(a=out1,b=out2,out=out[2]);
-    And(a=out1,b=out3,out=out[3]);
+
+    Not(in=in[0], out=not0);
+    Not(in=in[1], out=not1);
+    And(a=not0,b=not1,out=out[0]);
+    And(a=in[0],b=not1,out=out[1]);
+    And(a=not0,b=in[1],out=out[2]);
+    And(a=in[0],b=in[1],out=out[3]);
+
+    
+
 
 
 
