@@ -1,0 +1,14 @@
+// Modified by Minho Kim (9 Oct 2014)
+
+/** 
+ * Encoder. out=0 if in==01, out=1 if in==10
+ */
+
+CHIP Encoder {
+    IN in[2];
+    OUT out;
+
+    PARTS:
+    Not(in=in[0], out=x);
+    And(a=in[1], b=x, out=out);
+}

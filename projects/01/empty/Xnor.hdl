@@ -1,0 +1,13 @@
+// Modified by Minho Kim 26 Sep 2014
+
+/**
+ *  Equivalence gate: out = (a == b).
+ */
+
+CHIP Xnor {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+}
