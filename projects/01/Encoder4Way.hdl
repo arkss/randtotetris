@@ -12,5 +12,6 @@ CHIP Encoder4Way {
     OUT out[2];
 
     PARTS:
-    // Put your code here:
+    Or(a=in[3],b=in[1],out=out[0]);
+    Or(a=in[3],b=in[2],out=out[1]);
 }
