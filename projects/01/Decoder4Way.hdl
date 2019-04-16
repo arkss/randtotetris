@@ -20,11 +20,4 @@ CHIP Decoder4Way {
     And(a=in[0],b=not1,out=out[1]);
     And(a=not0,b=in[1],out=out[2]);
     And(a=in[0],b=in[1],out=out[3]);
-
-    
-
-
-
-
-    
 }
