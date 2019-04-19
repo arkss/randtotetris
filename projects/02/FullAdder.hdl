@@ -13,7 +13,8 @@ CHIP FullAdder {
         carry;   // Left bit of a + b + c
 
     PARTS:
-    // standard form 으로 구현하기
+    /*
+     standard form 으로 구현하기
     Xor(a=a,b=b, out=SubSum);
     Xor(a=SubSum,b=c, out=sum);
     Or(a=a,b=b, out=out1);
@@ -21,9 +22,14 @@ CHIP FullAdder {
     Or(a=c,b=a, out=out3);
     And(a=out1, b=out2, out=AndOut1);
     And(a=AndOut1, b=out3, out=carry);
-    
+    */
     
     // half adder 두 개로 구현하기
+    Xor(a=a,b=b,out=sum0);
+    And(a=a,b=b,out=carry0);
+    Xor(a=sum0,b=c,out=sum);
+    And(a=sum0,b=c,out=carry1);
+    Or(a=carry0,b=carry1,out=carry);
 
 
 }
