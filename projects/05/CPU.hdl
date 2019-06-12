@@ -39,5 +39,14 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
+    Not(in=instruction[15], out=loadA);
+    And(a=Instruction[15], b=instruction[4], out=loadD); // C-instruction & dest[D] ==1 then load D
+    And(a=Instruction[15], b=instruction[3], out=writeM); // C-instruction & dest[M] ==1 then load M
+    DRegister(in=outALU, load=loadD, out=outD);
+    ARegister(in[0..14]=instruction[0..14], in[15] =false , load=loadA, out[0..14]=addressM, out=outA);
+    PC(reset=false, load=false, inc=true, out[0..14]=pc);
+    ALU(x=outD, y=outA , zx=instruction[11] , nx=instruction[10], zy=instruction[9],ny=instruction[8],f=instruction[7],no=instruction[6],out=outALU, out=outM);
+    // 첫,두번째 input은 D,A register
+
+    // 메모리에 저잘하기 위해서는 주소, 데이터, writeM
 }
