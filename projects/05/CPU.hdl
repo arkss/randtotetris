@@ -45,8 +45,14 @@ CHIP CPU {
     DRegister(in=outALU, load=loadD, out=outD);
     ARegister(in[0..14]=instruction[0..14], in[15] =false , load=loadA, out[0..14]=addressM, out=outA);
     PC(reset=false, load=false, inc=true, out[0..14]=pc);
-    ALU(x=outD, y=outA , zx=instruction[11] , nx=instruction[10], zy=instruction[9],ny=instruction[8],f=instruction[7],no=instruction[6],out=outALU, out=outM);
+    Mux16(a=,b=, sel=instruction[12], out=ALUy);
+
+    ALU(x=outD, y=outA , zx=instruction[11] , nx=instruction[10], zy=instruction[9],ny=instruction[8],f=instruction[7],no=instruction[6],out=outALU, out=outM, ng=ALUng);
     // 첫,두번째 input은 D,A register
 
     // 메모리에 저잘하기 위해서는 주소, 데이터, writeM
+
+    // if JLT and ALUng ==1 them jump
+    And(a=,b=,)
+
 }
